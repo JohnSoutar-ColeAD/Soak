@@ -48,12 +48,12 @@ class User {
 		$DB->execute(array(':username' => $username));
 
 
-		if (is_array($DB->result) && (count($DB->result[0]) >= 1)) {
+		if (count($DB->result) > 0) {
 			$resultArray = $DB->result[0];
+			// Populate the user object from the returned array
+			$this->loadFromArray($resultArray);
 		}
 
-		// Populate the user object from the returned array
-		$this->loadFromArray($resultArray);
 	}
 
 	function loadFromArray($userArray) {

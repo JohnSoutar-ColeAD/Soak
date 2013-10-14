@@ -26,11 +26,14 @@ class Login {
 	function auth($username, $password) {
 		global $passHasher;
 
+		// If a username and password was provided
 		if ($username && $password) {
 
+			// Build a new User object from the username
 			$User = new User;
 			$User->loadFromUsername($username);
 
+			// If the password provided matches the hashed password stored for the user
 			if ($passHasher->CheckPassword($password, $User->hashedPassword)) {
 				// Auth success
 				
