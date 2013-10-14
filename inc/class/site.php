@@ -24,12 +24,16 @@ class Site {
 		// Build the page object with the page ID specified in the URL
 		if (isset($_GET[$this->Settings['pageIDParam']->get()])) {
 			$pageID = $_GET[$this->Settings['pageIDParam']->get()];
+		} elseif (isset($_GET['slug'])) {
+			$slug = $_GET['slug'];
 		} else {
 			$pageID = $this->Settings['defaultPageID']->get();
 		}
 
-		if ($pageID) {
+		if (isset($pageID)) {
 			$this->Page = new Page($pageID);
+		} elseif ($slug) {
+			$this->Page = new Page($slug, TRUE);
 		} else {
 			// Load the "defaultPageID" setting
 			$this->Page = new Page($this->Settings['defaultPageID']->get());

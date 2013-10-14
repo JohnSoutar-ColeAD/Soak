@@ -3,6 +3,7 @@
 class Page {
 	var $pageID = '';
 	var $siteID = '';
+	var $pageSlug = '';
 
 	var $userID = '';
 	var $templateID = '';
@@ -16,27 +17,28 @@ class Page {
 
 	var $Template;
 
-	function Page($pageID = '') {
+	function Page($pageID = '', $using_slug = FALSE) {
 
 		$this->pageID = $pageID;
 
-		if ($pageID != '') {
-			$this->loadFromID($pageID);
+		if ($using_slug) {
+			$this->loadFromSlug($pageID);
 			$this->Template = new Template($this->templateID);
 
-			$this->parsedContent = $this->parsePage();
-		} else {
-			die('No page ID provided');
+		} elseif ($pageID != '') {
+			$this->loadFromID($pageID);
+			$this->Template = new Template($this->templateID);
 		}
 		
 	}
 
-	function parsePage() {
-
-
-		return $this->parsedContent;
+	function loadFromSlug($pageSlug) {
+		global $DB;
+		
+		$DB->prepare('SELECT * FROM page WHERE pageSlug = :pageSlug');
+		$DB->execute(array(':pageSlug' => $pageSlug));
+		$this->loadFromArray($DB->result);
 	}
-
 	function loadFromID($pageID) {
 		global $DB;
 		

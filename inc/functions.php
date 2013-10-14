@@ -67,15 +67,21 @@ function buildMenu($level = 0) {
 		$DB->execute(array(':siteID' => $Site->siteID, 'parentID' => $Page['pageID']));
 		$hasChild = $DB->result;
 
+		if ($Site->Page->pageID == $Page['pageID']) {
+			$class =" active";
+		} else {
+			$class = "";
+		}
+
 		if ($hasChild) {
-			echo '<li class="dropdown">';
-			echo '<a href="?pid=' . $Page['pageID'] . '">' . $Page['pageTitle'] . '<b class="caret"></b></a>';
+			echo '<li class="dropdown' . $class . '">';
+			echo '<a href="/' . $Page['pageSlug'] . '">' . $Page['pageTitle'] . '<b class="caret"></b></a>';
 			buildMenu($Page['pageID']);
 
 
 		} else {
-			echo '<li>';
-			echo '<a href="?pid=' . $Page['pageID'] . '">' . $Page['pageTitle'] . '</a>';
+			echo '<li class="' . $class . '">';
+			echo '<a href="/' . $Page['pageSlug'] . '">' . $Page['pageTitle'] . '</a>';
 
 		}
 
