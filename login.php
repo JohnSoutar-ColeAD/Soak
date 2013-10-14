@@ -2,9 +2,9 @@
 <?php
 
     if ($Site->Session->logIn($_POST['username'], $_POST['password'], TRUE)) {
-    	header("Location: ../");
+    	header("Location: " . $_SERVER['HTTP_REFERER']);
     } else {
-    	header("Location: ../?err=auth");
+    	header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=auth");
 
     }
 

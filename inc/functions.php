@@ -21,6 +21,11 @@ function get_siteName() {
 	echo $Site->siteName;
 }
 
+function get_siteDescription() {
+	global $Site;
+
+	echo $Site->siteDescription;
+}
 function get_pageTitle() {
 	global $Site;
 

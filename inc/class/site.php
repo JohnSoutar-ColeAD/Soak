@@ -4,6 +4,7 @@ class Site {
 	var $siteID;
 	var $siteName = '';
 	var $siteURL= '';
+	var $siteDescription = '';
 	var $themeID = '';
 
 	var $Page;

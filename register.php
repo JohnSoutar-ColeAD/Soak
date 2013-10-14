@@ -3,11 +3,10 @@
 
 $Registration = new Registration($_POST);
 if ($Registration->success) {
-	$Session = new Session;
-	$Session->logIn($_POST['username'], $_POST['password'], TRUE);
-	header("Location: ../");
+	$Site->Session->logIn($_POST['username'], $_POST['password'], TRUE);
+	header("Location: " . $_SERVER['HTTP_REFERER']);
 } else {
-	header("Location: ../?err=taken");
+	header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=error");
 }
 
 

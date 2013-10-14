@@ -1,43 +1,12 @@
-/* ==========================================================================
-   Imports
-   ========================================================================== */
-
-@import "elements.less";
-
-/* ==========================================================================
-   Declarations
-   ========================================================================== */
-
-@navColor: #881f49;
 
 
 /* ==========================================================================
-Styles
+   Author's custom styles
    ========================================================================== */
-
-div.button {
-	font-size: 21px;
-	text-align: center;
-	padding: 20px 0 20px 0;
-	background-color: @navColor;
-	color: #fff;
-	width: 150px;
-}
-div.button a {
-	color: #fff;
-}
-div.button:hover {
-	background-color: lighten(@navColor, 15%);
-}
 
 ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;    
 }
-
-
-
-
-
 
 
 

@@ -6,37 +6,49 @@ get_header();
 
 ?>
 
-<div class="article-container">
-	<article>
+<div class="article-container row">
+	<article class="col-lg-8">
 		<h2><?php get_pageTitle(); ?></h2>
 		<?php get_pageContent(); ?>
 	</article>
-    <div>
+    <div class="col-lg-4">
     <?php
 
         if ($Site->Session->loggedIn()) {
-            echo "You are logged in as ". $Site->Session->User->username;
+            echo "<h3>You are logged in as ". $Site->Session->User->username . "</h3>";
+            ?>
+            <?
         } else {
     ?> 
 
         <hr />
-        <form action="register.php" method="post">
-            <input type="text" name="username" placeholder="Username" /><br />
-            <input type="password" name="password" placeholder="********"/>
-            <input type="password" name="password_confirm" placeholder="********"/><br />
-            <input type="text" name="firstName" placeholder="First name" />
-            <input type="text" name="lastName" placeholder="Last name" /><br />
-            <input type="text" name="emailAddress" placeholder="Email address" />
+        <form action="register.php" method="post" role="form">
+            <div class="form-group col-lg-8">
+                <input type="text" class="form-control" name="username" placeholder="Username" />
+                <input type="password" class="form-control" name="password" placeholder="********"/>
+            </div>
 
-            <input type="submit" value="Register" />
+            <div class="form-group col-lg-8">
+                <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                <input type="text" class="form-control" name="emailAddress" placeholder="Email address" />
+            </div>
+            <div class="form-group col-lg-8">
+                <button type="submit" class="btn">Register</button>
+            </div>
 
         </form>
+        <?
+        
+            }
+
+        ?>
     </div>
 </div>
 
-<?
-    	
-    }
+
+
+<?php
 
 get_footer();
 
