@@ -10,4 +10,5 @@
     // You have been warned
     
     include($Site->Page->Template->templateLocation);
+    
 ?>    

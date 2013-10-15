@@ -1,7 +1,8 @@
 <?php
 
-// Page.php
-// Main page template
+// register.php
+// Page with registration form aside
+
 get_header();
 
 ?>
@@ -12,16 +13,15 @@ get_header();
 		<?php get_pageContent(); ?>
 	</article>
     <div class="col-lg-4">
+        <hr />
     <?php
 
         if ($Site->Session->loggedIn()) {
-            echo "<h3>You are logged in as ". $Site->Session->User->username . "</h3>";
+            echo "<h3>You are already logged in as ". $Site->Session->User->username . "</h3>";
             ?>
             <?
         } else {
     ?> 
-
-        <hr />
         <form action="register.php" method="post" role="form">
             <div class="form-group col-lg-8">
                 <input type="text" class="form-control" name="username" placeholder="Username" />
