@@ -81,9 +81,9 @@ function buildMenu($level = 0) {
 		if ($hasChild) {
 			echo '<li class="dropdown' . $class . '">';
 			echo '<a href="/' . $Page['pageSlug'] . '">' . $Page['pageTitle'] . '<b class="caret"></b></a>';
+
+			// Recurse into the next level
 			buildMenu($Page['pageID']);
-
-
 		} else {
 			echo '<li class="' . $class . '">';
 			echo '<a href="/' . $Page['pageSlug'] . '">' . $Page['pageTitle'] . '</a>';
