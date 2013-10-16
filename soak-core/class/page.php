@@ -37,7 +37,12 @@ class Page {
 		
 		$DB->prepare('SELECT * FROM page WHERE pageSlug = :pageSlug');
 		$DB->execute(array(':pageSlug' => $pageSlug));
-		$this->loadFromArray($DB->result);
+
+		if (count($DB->result) > 0) {
+			$this->loadFromArray($DB->result);
+		} else {
+			$this->loadFromSlug('error-404');
+		}
 	}
 	function loadFromID($pageID) {
 		global $DB;

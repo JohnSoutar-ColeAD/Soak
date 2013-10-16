@@ -55,7 +55,7 @@
           } else {
             ?>
           <div class="navbar-form navbar-right">
-            <a href="logout.php"><button class="btn">Log out</button></a>
+            <a href="../logout.php"><button class="btn">Log out</button></a>
           </div>
             <?    
           }

@@ -1,9 +1,9 @@
-<?php require('inc/common.php'); ?>
+<?php $siteID = 1;
+require('soak-core/common.php'); ?>
 <?php
 
-	$Session = new Session();
-    if ($Session->loggedIn()) {
-    	$Session->logOut();
+    if ($Site->Session->loggedIn()) {
+    	$Site->Session->logOut();
     }
 
     header("Location: ../");

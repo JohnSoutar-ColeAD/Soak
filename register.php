@@ -1,4 +1,5 @@
-<?php require('inc/common.php'); ?>
+<?php $siteID = 1;
+require('soak-core/common.php'); ?>
 <?php
 
 $Registration = new Registration($_POST);

@@ -15,7 +15,12 @@ class Theme {
 		} else {
 			$this->loadFromID($themeID);
 
-			$this->themeLocation = 'themes/' . $this->themeName;
+			if (is_dir('themes/' . $this->themeName)) {
+				$this->themeLocation = 'themes/' . $this->themeName;
+			} else {
+				$this->themeLocation = '../themes/' . $this->themeName;
+			}
+			
 		}
 
 	}

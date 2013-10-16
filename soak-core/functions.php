@@ -57,7 +57,7 @@ function buildMenu($level = 0) {
 
 	$out = '';
 
-	$DB->prepare('SELECT * FROM page WHERE siteID = :siteID AND parentID = :parentID ORDER BY sortOrder ASC');
+	$DB->prepare('SELECT * FROM page WHERE pageVisibility = 1 AND siteID = :siteID AND parentID = :parentID ORDER BY sortOrder ASC');
 	$DB->execute(array(':siteID' => $Site->siteID, 'parentID' => $level));
 
 	if ($level == 0) {
@@ -68,7 +68,7 @@ function buildMenu($level = 0) {
 	}
 	foreach ($DB->result as $Page) {
 
-		$DB->prepare('SELECT * FROM page WHERE siteID = :siteID AND parentID = :parentID ORDER BY sortOrder ASC');
+		$DB->prepare('SELECT * FROM page WHERE pageVisibility = 1 AND siteID = :siteID AND parentID = :parentID ORDER BY sortOrder ASC');
 		$DB->execute(array(':siteID' => $Site->siteID, 'parentID' => $Page['pageID']));
 		$hasChild = $DB->result;
 
@@ -93,4 +93,14 @@ function buildMenu($level = 0) {
 		echo "</li>";
 	}
 	echo "</ul>";
+}
+
+////////////////////////////////	
+// Theme functions            //
+////////////////////////////////
+
+function get_themeLocation() {
+	global $Site;
+
+	echo $Site->Theme->themeLocation;
 }

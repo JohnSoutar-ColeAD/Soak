@@ -1,5 +1,8 @@
-<?php require('inc/common.php'); ?>
-<?php
+<?php 
+
+$siteID = 1;
+
+require('soak-core/common.php');
 
     /////////////////////////////////////////
     // ABANDON HOPE ALL YE WHO ENTER HERE  //

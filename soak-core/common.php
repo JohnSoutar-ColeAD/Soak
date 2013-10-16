@@ -23,6 +23,11 @@ require('class/user.php');
 
 // Create our database and site objects
 $DB = new Database;
-$Site = new Site;
+$Site = new Site($siteID);
+
+// Include our theme functions
+if (file_exists($Site->Theme->themeLocation . '/functions.php')) {
+	require($Site->Theme->themeLocation . '/functions.php');
+}
 
 ?>

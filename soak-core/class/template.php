@@ -22,8 +22,12 @@ class Template {
 			$this->loadFromID($this->templateID);
 		}
 
-		$this->templateLocation = 'themes/' . $this->Theme->themeName . '/' . $this->templateName . '.php';
-		$this->templateContent = file_get_contents('themes/' . $this->Theme->themeName . '/' . $this->templateName . '.php');
+		if (!file_exists('themes/' . $this->Theme->themeName . '/' . $this->templateName . '.php')) {
+			$this->templateLocation = '../themes/' . $this->Theme->themeName . '/' . $this->templateName . '.php';
+		} else {
+			$this->templateLocation = 'themes/' . $this->Theme->themeName . '/' . $this->templateName . '.php';
+		}
+		$this->templateContent = file_get_contents($this->templateLocation);
 
 	}
 
